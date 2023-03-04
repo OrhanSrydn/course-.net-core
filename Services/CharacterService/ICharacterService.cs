@@ -7,5 +7,6 @@ namespace course_.net_core.Services.CharacterService
         Task <ServiceResponse<List<GetCharacterDto>>> AddCharacter(AddCharacterDto newCharacter);
         Task <ServiceResponse<GetCharacterDto>> UpdateCharacter(UpdateCharacterDto updatedCharacter);
         Task <ServiceResponse<List<GetCharacterDto>>> DeleteCharacter(int id);
+        Task <ServiceResponse<GetCharacterDto>> AddCharacterSkill(AddCharacterSkillsDto newCharacterSkill);
     }
 }
