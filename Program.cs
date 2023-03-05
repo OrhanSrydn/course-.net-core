@@ -3,6 +3,7 @@ global using course_.net_core.Services.CharacterService;
 global using course_.net_core.Dtos.Character;
 global using Microsoft.EntityFrameworkCore;
 global using course_.net_core.Data;
+global using course_.net_core.Services.FightService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Filters;
@@ -44,6 +45,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 });
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IWeaponService, WeaponService>();
+builder.Services.AddScoped<IFightService, FightService>();
 
 var app = builder.Build();
 

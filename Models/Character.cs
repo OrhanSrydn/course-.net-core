@@ -17,5 +17,8 @@ namespace course_.net_core.Models
         public User? Users { get; set; }
         public Weapon? Weapon { get; set; }
         public List<Skill>? Skill { get; set; }
+        public int Fights { get; set; }
+        public int Victories { get; set; }
+        public int Defeats { get; set; }
     }
 }
