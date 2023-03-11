@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace course_.net_core.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Player,Admin")]
     [ApiController]
     [Route("api/[controller]")]
     public class CharacterController : ControllerBase

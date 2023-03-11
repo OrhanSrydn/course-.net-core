@@ -51,6 +51,7 @@ namespace course_.net_core.Data
             CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
+            user.Role = "Player";
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -91,7 +92,8 @@ namespace course_.net_core.Data
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username)
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Role, user.Role)
             };
 
             var appSettingsToken = _configuration.GetSection("AppSettings:Token").Value;

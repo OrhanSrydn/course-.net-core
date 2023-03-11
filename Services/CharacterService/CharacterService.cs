@@ -21,6 +21,7 @@ namespace course_.net_core.Services.CharacterService
         }
 
         private int GetUserId() => int.Parse(_httpContextAccessor.HttpContext!.User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+        private string GetUserRole() => _httpContextAccessor.HttpContext!.User.FindFirstValue(ClaimTypes.Role)!;
 
 
         public async Task<ServiceResponse<List<GetCharacterDto>>> AddCharacter(AddCharacterDto newCharacter)
@@ -68,7 +69,10 @@ namespace course_.net_core.Services.CharacterService
         public async Task<ServiceResponse<List<GetCharacterDto>>> GetAllCharacters()
         {
             var serviceResponse = new ServiceResponse<List<GetCharacterDto>>();
-            var dbCharacters = await _context.Characters
+            var dbCharacters = 
+                GetUserRole().Equals("Admin") ? 
+                await _context.Characters.ToListAsync() :
+                await _context.Characters
                 .Include(c => c.Weapon)
                 .Include(c => c.Skill)
                 .Where(x => x.Users!.Id == GetUserId()).ToListAsync();

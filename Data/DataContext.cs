@@ -19,6 +19,8 @@ namespace course_.net_core.Data
                 new Skill{ Id = 2, Name = "Lightning", Damage = 20},
                 new Skill{ Id = 3, Name = "Blizzard", Damage = 50}
             );
+            modelBuilder.Entity<User>()
+                .Property(users => users.Role).HasDefaultValue("Player");
         }
 
         public DbSet<Character> Characters => Set<Character>();
