@@ -15,6 +15,6 @@ namespace course_.net_core.Models
         public List<Character>? Characters { get; set; }
         
         [Required]
-        public string Role { get; set; } = string.Empty;
+        public string Role { get; set; } = "Player";
     }
 }
